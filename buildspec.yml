@@ -1,19 +1,36 @@
 version: 0.2
 
+env:
+  variables: {}
+  parameter-store: {}
+
 phases:
   install:
     commands:
+      - echo Entered the install phase...
       - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-      - apt-get update
-      - apt-get install -y awscli
-      - npm install -g hexo-cli
-      - npm install hexo-generator-sitemap --save
-      - npm install
-
+      - apt-get -qq update
+      - apt-get -qq install curl
+      - apt-get -qq install asciidoctor
+      - curl -s -L https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_extended_0.83.1_Linux-64bit.deb -o hugo.deb
+      - dpkg -i hugo.deb
+    finally:
+      - echo Installation done
   build:
     commands:
-      - hexo generate
-
+      - echo Entered the build phase ...
+      - echo Build started on `date`
+      - rm -f buildspec.yml
+      - hugo -D
+    finally:
+      - echo Building the HTML files finished
   post_build:
     commands:
+      - echo Entered the post_build phase...
+      - echo Build completed on `date`
       - cd public/ && aws s3 sync . s3://hoangtrangallery
+artifacts:
+  files: []
+secondary-artifacts: {}
+cache:
+  paths: []
