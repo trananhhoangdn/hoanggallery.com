@@ -28,7 +28,7 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
-      - cd public/ && aws s3 sync . s3://hoangtrangallery
+      - cd public/ && aws s3 sync . s3://hoanggallery.com
 artifacts:
   files: []
 secondary-artifacts: {}
