@@ -8,4 +8,4 @@ improvecontrast: true
 
 You can download Grayscale for free from the Github page.
 
-{{< big-button text="Visit Download Page" href="https://github.com/runningstream/hugograyscale/" >}}
+
