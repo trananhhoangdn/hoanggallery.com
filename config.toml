@@ -1,5 +1,5 @@
 ######################## default configuration ####################
-baseURL = "http://hoangtrangallery.s3-website-ap-southeast-2.amazonaws.com/"
+baseURL = "http://hoanggallery.com.s3-website-ap-southeast-2.amazonaws.com/"
 title = "Hoang Gallery"
 theme = "persian"
 languageName = "En"
